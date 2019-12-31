@@ -1,0 +1,5 @@
+nodemon.json
+node_modules/
+client/node_modules/
+config/keys_prod.js
+production.json
