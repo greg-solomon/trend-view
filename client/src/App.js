@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "@apollo/react-hooks";
@@ -7,9 +7,10 @@ import { useSpring, animated } from "react-spring";
 import Search from "./components/Search/Search";
 import View from "./components/View/View";
 import Header from "./components/Header";
-// import colors from "./utils/colors";
+import InfoModal from "./components/InfoModal";
 
 const App = () => {
+  const [toggleInfo, setToggleInfo] = useState(false);
   const client = new ApolloClient({
     uri: `/graphql`
   });
@@ -24,7 +25,20 @@ const App = () => {
       <Router>
         <AppWrapper className="App" style={fade}>
           <Header />
-          <Route exact path="/" component={Search} />
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <Search
+                {...props}
+                setToggleInfo={setToggleInfo}
+                toggleInfo={toggleInfo}
+              />
+            )}
+          />
+          {toggleInfo && (
+            <InfoModal setToggleInfo={setToggleInfo} toggleInfo={toggleInfo} />
+          )}
           <Route path="/trends/:id" component={View} />
         </AppWrapper>
       </Router>

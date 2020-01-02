@@ -5,13 +5,19 @@ import Loading from "../Loading";
 import ErrorPage from "../ErrorPage";
 import SelectController from "./SelectController";
 
-const SearchData = () => {
+const SearchData = ({ setToggleInfo, toggleInfo }) => {
   const { loading, error, data } = useQuery(timesQuery);
   return (
     <>
       {loading && <Loading message="Fetching times..." />}
       {error && <ErrorPage error={error} />}
-      {data && <SelectController data={data.timestamps} />}
+      {data && (
+        <SelectController
+          data={data.timestamps}
+          setToggleInfo={setToggleInfo}
+          toggleInfo={toggleInfo}
+        />
+      )}
     </>
   );
 };

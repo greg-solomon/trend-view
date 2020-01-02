@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { useSpring, animated } from "react-spring";
 import SearchData from "./SearchData";
 
-const SearchWrapper = () => {
+const SearchWrapper = ({ setToggleInfo, toggleInfo }) => {
   const animation = useSpring({
     from: {
       opacity: 0,
@@ -16,7 +16,7 @@ const SearchWrapper = () => {
   });
   return (
     <SearchBox style={animation}>
-      <SearchData />
+      <SearchData setToggleInfo={setToggleInfo} toggleInfo={toggleInfo} />
     </SearchBox>
   );
 };

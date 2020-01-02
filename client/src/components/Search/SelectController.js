@@ -5,14 +5,15 @@ import { Link } from "react-router-dom";
 import { animated, useSpring } from "react-spring";
 import parseTimestamps from "../../utils/parseTimestamps";
 import parseTimeOptions from "../../utils/parseTimeOptions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import colors from "../../utils/colors";
-
-const SelectController = ({ data }) => {
+const SelectController = ({ data, toggleInfo, setToggleInfo }) => {
   const [selectedDate, setSelectedDate] = useState({});
   const [selectedTime, setSelectedTime] = useState({});
   const [isTimeDisabled, setIsTimeDisabled] = useState(true);
   const [timeOptions, setTimeOptions] = useState([]);
-
+  const [infoColor, setInfoColor] = useState(colors.dark);
   const [isDateSelected, setIsDateSelected] = useState(false);
   const [isTimeSelected, setIsTimeSelected] = useState(false);
   const timestamps = parseTimestamps(data);
@@ -27,6 +28,14 @@ const SelectController = ({ data }) => {
   const timeChange = selectedOption => {
     setSelectedTime(selectedOption);
     setIsTimeSelected(true);
+  };
+
+  const infoHover = () => {
+    setInfoColor(colors.blue);
+  };
+
+  const infoLeave = () => {
+    setInfoColor(colors.dark);
   };
 
   const timeFadeIn = useSpring({ opacity: isDateSelected ? 1 : 0 });
@@ -55,6 +64,15 @@ const SelectController = ({ data }) => {
           View Trends
         </Link>
       </LinkWrapper>
+      <InfoButton onClick={() => setToggleInfo(!toggleInfo)}>
+        <FontAwesomeIcon
+          icon={faInfoCircle}
+          size="3x"
+          color={infoColor}
+          onMouseEnter={infoHover}
+          onMouseLeave={infoLeave}
+        />
+      </InfoButton>
     </Wrapper>
   );
 };
@@ -70,6 +88,14 @@ const linkStyles = {
   cursor: "pointer"
 };
 
+const InfoButton = styled.button`
+  border: none;
+  background: none;
+  padding: 1rem;
+  cursor: pointer;
+  margin: 2rem auto;
+`;
+
 const SelectWrapper = styled(animated.div)`
   max-width: 300px;
   width: 100%;
@@ -77,13 +103,14 @@ const SelectWrapper = styled(animated.div)`
 `;
 
 const Wrapper = styled.div`
-  height: 90vh;
+  height: 100%;
   width: 100%;
+  max-width: 900px;
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-evenly;
   flex-direction: column;
   position: absolute;
-  margin-top: -4vh;
 `;
 
 const LinkWrapper = styled(animated.div)`
