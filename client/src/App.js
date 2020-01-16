@@ -1,13 +1,12 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "@apollo/react-hooks";
-import styled from "styled-components";
-import { useSpring, animated } from "react-spring";
-import Search from "./components/Search/Search";
-import View from "./components/View/View";
-import Header from "./components/Header";
-import InfoModal from "./components/InfoModal";
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from '@apollo/react-hooks';
+import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
+import Search from './components/Search/Search';
+import View from './components/View/View';
+import Header from './components/Header';
 
 const App = () => {
   const [toggleInfo, setToggleInfo] = useState(false);
@@ -23,11 +22,11 @@ const App = () => {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <AppWrapper className="App" style={fade}>
+        <AppWrapper className='App' style={fade}>
           <Header />
           <Route
             exact
-            path="/"
+            path='/'
             render={props => (
               <Search
                 {...props}
@@ -36,10 +35,7 @@ const App = () => {
               />
             )}
           />
-          {toggleInfo && (
-            <InfoModal setToggleInfo={setToggleInfo} toggleInfo={toggleInfo} />
-          )}
-          <Route path="/trends/:id" component={View} />
+          <Route path='/trends/:id' component={View} />
         </AppWrapper>
       </Router>
     </ApolloProvider>

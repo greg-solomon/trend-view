@@ -1,22 +1,22 @@
-import React from "react";
-import styled from "styled-components";
-import { useSpring, animated } from "react-spring";
-import SearchData from "./SearchData";
+import React from 'react';
+import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
+import SearchData from './SearchData';
 
 const SearchWrapper = ({ setToggleInfo, toggleInfo }) => {
   const animation = useSpring({
     from: {
       opacity: 0,
-      transform: "translate3d(0,-50px, 0)"
+      transform: 'translate3d(0,-50px, 0)'
     },
     to: {
       opacity: 1,
-      transform: "translate3d(0,0, 0)"
+      transform: 'translate3d(0,0, 0)'
     }
   });
   return (
     <SearchBox style={animation}>
-      <SearchData setToggleInfo={setToggleInfo} toggleInfo={toggleInfo} />
+      <SearchData />
     </SearchBox>
   );
 };

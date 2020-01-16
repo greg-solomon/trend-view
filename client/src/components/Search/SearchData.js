@@ -1,23 +1,17 @@
-import React from "react";
-import { useQuery } from "@apollo/react-hooks";
-import timesQuery from "../../graphql/times.query";
-import Loading from "../Loading";
-import ErrorPage from "../ErrorPage";
-import SelectController from "./SelectController";
+import React from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import timesQuery from '../../graphql/times.query';
+import Loading from '../Loading';
+import ErrorPage from '../ErrorPage';
+import SelectController from './SelectController';
 
 const SearchData = ({ setToggleInfo, toggleInfo }) => {
   const { loading, error, data } = useQuery(timesQuery);
   return (
     <>
-      {loading && <Loading message="Fetching times..." />}
+      {loading && <Loading message='Fetching times...' />}
       {error && <ErrorPage error={error} />}
-      {data && (
-        <SelectController
-          data={data.timestamps}
-          setToggleInfo={setToggleInfo}
-          toggleInfo={toggleInfo}
-        />
-      )}
+      {data && <SelectController data={data.timestamps} />}
     </>
   );
 };
