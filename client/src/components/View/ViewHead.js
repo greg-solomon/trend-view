@@ -1,27 +1,30 @@
-import React from "react";
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import colors from "../../utils/colors";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import colors from '../../utils/colors';
 
 const ViewHead = ({ date }) => {
   return (
     <Wrapper>
       <Date>Trends from {date}</Date>
       <Link
-        to="/"
-        className="change-date-link"
-        style={{ color: colors.blue, marginRight: "1rem" }}
-      >
+        to='/'
+        className='change-date-link'
+        style={{ color: colors.blue, marginRight: '1rem' }}>
         Change
       </Link>
     </Wrapper>
   );
 };
 
+ViewHead.propTypes = {
+  date: PropTypes.string.isRequired
+};
+
 const Wrapper = styled.div`
-  width: 100%;
+  width: 90%;
   display: flex;
-  max-width: 900px;
   margin: 1rem auto;
   justify-content: space-between;
   align-items: center;

@@ -4,8 +4,7 @@ import timesQuery from '../../graphql/times.query';
 import Loading from '../Loading';
 import ErrorPage from '../ErrorPage';
 import SelectController from './SelectController';
-
-const SearchData = ({ setToggleInfo, toggleInfo }) => {
+const SearchData = () => {
   const { loading, error, data } = useQuery(timesQuery);
   return (
     <>

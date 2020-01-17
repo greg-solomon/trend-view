@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useSpring, animated } from 'react-spring';
 import SearchData from './SearchData';
+import PropTypes from 'prop-types';
 
 const SearchWrapper = ({ setToggleInfo, toggleInfo }) => {
   const animation = useSpring({
@@ -21,6 +22,10 @@ const SearchWrapper = ({ setToggleInfo, toggleInfo }) => {
   );
 };
 
+SearchWrapper.propTypes = {
+  setToggleInfo: PropTypes.func.isRequired,
+  toggleInfo: PropTypes.bool.isRequired
+};
 const SearchBox = styled(animated.div)`
   width: 100%;
   height: 100%;

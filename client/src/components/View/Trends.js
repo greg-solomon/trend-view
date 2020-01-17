@@ -1,28 +1,28 @@
-import React, { useState } from "react";
-import Trend from "./Trend";
-import styled from "styled-components";
-import { useSpring, animated } from "react-spring";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
-import colors from "../../utils/colors";
+import React, { useState } from 'react';
+import Trend from './Trend';
+import styled from 'styled-components';
+import { useSpring, animated } from 'react-spring';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import colors from '../../utils/colors';
 
 const Trends = ({ trends }) => {
   const [toggle, setToggle] = useState(false);
   const reveal = useSpring({
-    transform: toggle ? "translate3d(0,100px, 0)" : "translate3d(0,0, 0)",
+    transform: toggle ? 'translate3d(0,100px, 0)' : 'translate3d(0,0, 0)',
     opacity: toggle ? 1 : 0
   });
   return (
     <TrendWrapper>
       <RevealWrapper>
         <CTA onClick={() => setToggle(!toggle)}>
-          All Trends{" "}
+          All Trends{' '}
           <FontAwesomeIcon
             icon={faChevronRight}
             color={colors.blue}
             style={{
-              transform: toggle ? "rotate(90deg)" : "rotate(0deg)",
-              transition: "all 0.2s ease"
+              transform: toggle ? 'rotate(90deg)' : 'rotate(0deg)',
+              transition: 'all 0.2s ease'
             }}
           />
         </CTA>
@@ -65,8 +65,7 @@ const ListWrapper = styled(animated.div)`
   justify-content: flex-start;
 `;
 const TrendWrapper = styled.div`
-  max-width: 900px;
-  width: 100%;
+  width: 90%;
   margin: 1rem auto;
 `;
 export default Trends;

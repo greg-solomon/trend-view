@@ -6,8 +6,9 @@ import { animated, useSpring } from 'react-spring';
 import parseTimestamps from '../../utils/parseTimestamps';
 import parseTimeOptions from '../../utils/parseTimeOptions';
 import colors from '../../utils/colors';
-
+import PropTypes from 'prop-types';
 const SelectController = ({ data }) => {
+  console.log(data);
   const [selectedDate, setSelectedDate] = useState({});
   const [selectedTime, setSelectedTime] = useState({});
   const [isTimeDisabled, setIsTimeDisabled] = useState(true);
@@ -88,6 +89,7 @@ const CTA = styled.h2`
   margin: 0 auto;
   text-align: left;
   font-size: 1rem;
+  padding-bottom: 0.5rem;
 
   @media (min-width: 600px) {
     font-size: 1.5rem;
