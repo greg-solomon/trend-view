@@ -8,7 +8,6 @@ import parseTimeOptions from '../../utils/parseTimeOptions';
 import colors from '../../utils/colors';
 import PropTypes from 'prop-types';
 const SelectController = ({ data }) => {
-  console.log(data);
   const [selectedDate, setSelectedDate] = useState({});
   const [selectedTime, setSelectedTime] = useState({});
   const [isTimeDisabled, setIsTimeDisabled] = useState(true);

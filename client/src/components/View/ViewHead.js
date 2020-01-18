@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import colors from '../../utils/colors';
 
-const ViewHead = ({ date, data }) => {
-  console.log(data);
+const ViewHead = ({ date }) => {
   return (
     <Wrapper>
       <Date>Trends from {date}</Date>
