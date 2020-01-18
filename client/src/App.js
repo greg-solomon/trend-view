@@ -9,9 +9,8 @@ import View from './components/View/View';
 import Header from './components/Header';
 
 const App = () => {
-  const [toggleInfo, setToggleInfo] = useState(false);
   const client = new ApolloClient({
-    uri: `/graphql`
+    uri: `http://localhost:5000/graphql`
   });
 
   const fade = useSpring({
@@ -24,17 +23,7 @@ const App = () => {
       <Router>
         <AppWrapper className='App' style={fade}>
           <Header />
-          <Route
-            exact
-            path='/'
-            render={props => (
-              <Search
-                {...props}
-                setToggleInfo={setToggleInfo}
-                toggleInfo={toggleInfo}
-              />
-            )}
-          />
+          <Route exact path='/' render={() => <Search />} />
           <Route path='/trends/:id' component={View} />
         </AppWrapper>
       </Router>

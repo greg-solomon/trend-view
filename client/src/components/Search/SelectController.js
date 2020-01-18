@@ -34,7 +34,7 @@ const SelectController = ({ data }) => {
   return (
     <Wrapper>
       <CTA style={{ marginBottom: '1rem' }}>
-        Browse photos from hourly Twitter Trends
+        Browse photos from hourly US Twitter Trends
       </CTA>
       <SelectWrapper>
         <CTA>Select a Date</CTA>

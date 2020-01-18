@@ -80,7 +80,7 @@ const View = ({ match }) => {
     const sorted = sortTweets(filtered);
     return (
       <ViewWrapper>
-        <ViewHead date={date} />
+        <ViewHead date={date} data={data} />
         <Trends trends={filtered} />
         <TweetsWrapper>
           {sorted.map(tweet => (
