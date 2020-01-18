@@ -10,7 +10,7 @@ import Header from './components/Header';
 
 const App = () => {
   const client = new ApolloClient({
-    uri: `http://localhost:5000/graphql`
+    uri: `/graphql`
   });
 
   const fade = useSpring({
